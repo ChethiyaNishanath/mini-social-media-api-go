@@ -17,9 +17,6 @@ func AddComment(postId uuid.UUID, comment models.Comment) (*models.Post, error) 
 		return nil, err
 	}
 
-	repository.PostsMutex.RLock()
-	defer repository.PostsMutex.RUnlock()
-
 	comment.ID = uuid.New()
 	comment.PostID = postId
 
